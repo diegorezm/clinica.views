@@ -1,3 +1,5 @@
+import { faker } from "@faker-js/faker";
+
 export default interface Doctor {
   id: number;
   name: string;
@@ -28,22 +30,14 @@ export function generateMockDoctors(count: number): Doctor[] {
     "Pediatrician",
     "Surgeon",
   ];
-  const names = [
-    "John Doe",
-    "Jane Smith",
-    "Emily Johnson",
-    "Michael Brown",
-    "Sarah Davis",
-  ];
-
   const doctors: Doctor[] = [];
 
   for (let i = 0; i < count; i++) {
-    const createdAt = new Date();
-    const updatedAt = new Date();
+    const createdAt = faker.date.past();
+    const updatedAt = faker.date.past();
     doctors.push({
       id: i + 1,
-      name: names[Math.floor(Math.random() * names.length)],
+      name: faker.person.fullName(),
       job: jobs[Math.floor(Math.random() * jobs.length)],
       crm: generateDoctorCrm(),
       createdAt,

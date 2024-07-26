@@ -30,7 +30,7 @@ export default function Layout({
     },
     {
       label: "Pacientes",
-      route: "",
+      route: "/dashboard/patients",
       Icon: Users,
     },
     {
