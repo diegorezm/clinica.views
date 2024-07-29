@@ -35,7 +35,7 @@ export default function Layout({
     },
     {
       label: "Atendimentos",
-      route: "",
+      route: "/dashboard/appointments",
       Icon: Paperclip,
     },
   ];

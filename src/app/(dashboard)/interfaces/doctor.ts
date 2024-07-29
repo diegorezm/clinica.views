@@ -22,7 +22,7 @@ function generateDoctorCrm() {
   return crm;
 }
 
-export function generateMockDoctors(count: number): Doctor[] {
+export function createMockDoctor(): Doctor {
   const jobs = [
     "Cardiologist",
     "Dermatologist",
@@ -30,20 +30,23 @@ export function generateMockDoctors(count: number): Doctor[] {
     "Pediatrician",
     "Surgeon",
   ];
+
+  const createdAt = faker.date.past();
+  const updatedAt = faker.date.past();
+  return {
+    id: faker.number.int({ min: 1, max: 255 }),
+    name: faker.person.fullName(),
+    job: jobs[Math.floor(Math.random() * jobs.length)],
+    crm: generateDoctorCrm(),
+    createdAt,
+    updatedAt,
+  };
+}
+
+export function generateMockDoctors(count: number): Doctor[] {
   const doctors: Doctor[] = [];
-
   for (let i = 0; i < count; i++) {
-    const createdAt = faker.date.past();
-    const updatedAt = faker.date.past();
-    doctors.push({
-      id: i + 1,
-      name: faker.person.fullName(),
-      job: jobs[Math.floor(Math.random() * jobs.length)],
-      crm: generateDoctorCrm(),
-      createdAt,
-      updatedAt,
-    });
+    doctors.push(createMockDoctor());
   }
-
   return doctors;
 }

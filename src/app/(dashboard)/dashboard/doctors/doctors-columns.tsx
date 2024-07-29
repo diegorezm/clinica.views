@@ -1,6 +1,7 @@
 "use client";
 import { ColumnDef } from "@tanstack/react-table";
 import Doctor from "../../interfaces/doctor";
+import Link from "next/link";
 
 const doctorCols: ColumnDef<Doctor>[] = [
   {
@@ -10,6 +11,9 @@ const doctorCols: ColumnDef<Doctor>[] = [
   {
     accessorKey: "name",
     header: "Nome",
+    cell: ({ row }) => {
+      return <Link href="/dashboard/doctors/id">{row.original.name}</Link>;
+    },
   },
   {
     accessorKey: "job",
